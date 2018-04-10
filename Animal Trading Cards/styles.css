@@ -1,0 +1,29 @@
+/* add your CSS here */
+img{
+	width: 250px;
+    height: 250px;
+    padding-left: 20px;
+
+}
+#container{
+  border: 1px solid violet;
+  box-shadow: 5px 35px 35px grey;
+  padding: 20px;
+  width:350px;
+}
+#interesting-fact{
+   font-style: italic;
+}
+#card{
+  border: 1px solid violet;
+  padding: 15px;
+}
+span{
+  font-weight: bold;
+}
+ul{
+	list-style: none;
+}
+h1{
+    text-align: center;
+}
