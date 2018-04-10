@@ -1,11 +1,8 @@
 # FrontendNanodegree
-My solutions to Udacity Front-End Nanodegree Projects
+My solutions to Udacity Front-End Nanodegree Projects that I've completed thus far.
+
 ## Curriculum
-
-In the map "Documents" you can find a file "syllabus & Learning Outcomes", here you can read all about the attainment targets of this Nanodegree program and on which learning goals the projects focus.
-The Nanodegree is broken up into 5 main chapters:
-
-
+The Nanodegree is broken up into these main chapters:
 ### 1. Web Foundations
   - HTML  
   - CSS  (including flexbox)
@@ -19,7 +16,7 @@ The Nanodegree is broken up into 5 main chapters:
   - Data Types & Variables  
   - Conditionals  
   - Loops  
-  - Funtions  
+  - Functions  
   - Arrays  
   - Objects
   - ES6
