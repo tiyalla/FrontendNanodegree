@@ -72,7 +72,7 @@ The Nanodegree is broken up into these main chapters:
 - [x] P3 Personal Portfolio
 - [x] P4 Interactive Resume
 - [x] P5 Pixel Art Maker
-- [] P6 Memory Game (in Progress)
+- [x] P6 Memory Game (in Progress)
 - [] P7 Website Optimization (to be completed)
 - [] P7 Neighborhood Map (to be completed)
 - [] P8 Feed Reader Testing (to be completed)
