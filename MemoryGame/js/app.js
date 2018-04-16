@@ -15,18 +15,6 @@ var cardClassNames = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'f
 //helpers
 var openCards = [];
 var countMoves = 0, timer = 0, countCards = 0, firstClick = 0;
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
-
-/*console.log("after");
-for (var i = 0; i < cards.length; i++){
-    console.log(cards[i].className);
-}*/
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -42,24 +30,6 @@ function shuffle(array) {
 
     return array;
 }
-
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards
-  *     (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position
-  *    (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol
- *    (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page
- *    (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score
-  *    (put this functionality in another function that you call from this one)
- */
-
 
 function arrangeDeck(){ //shuffle cards and rearrange icons on cards
     shuffle(cardClassNames);
@@ -80,10 +50,14 @@ function displayCard(){
         gameTimer(startTime);
     }
 
-    this.classList.add("open", "show");
-    checkCardsMatch(this.children[0]);
+    if(!(this.classList.contains("show") || this.classList.contains("match"))){ //prevents cards matching after multiple clicks
+        this.classList.add("open", "show");
+        checkCardsMatch(this.children[0]);
+    }
+
 }
 
+//checks opened cards to see if they match
 function checkCardsMatch(cardElement){
     var card1 = openCards[0];
     var card2 = cardElement;
@@ -100,7 +74,6 @@ function checkCardsMatch(cardElement){
 }
 
 function cardsMatch(card1, card2){
-    console.log("We're matching");
     openCards.length = 0;
     countCards+=1;
     setTimeout(function () {
@@ -109,7 +82,6 @@ function cardsMatch(card1, card2){
         card1.offsetParent.classList.remove("open", "show");
         card2.offsetParent.classList.remove("open", "show");
     }, 1000);
-    console.log(countCards);
     if(countCards === 8){
 
         gameComplete();
@@ -129,7 +101,24 @@ function cardsNoMatch(card1, card2){
 function movesCounter(){
     countMoves+=1;
     document.querySelector(".moves").textContent = countMoves;
+    if(countMoves % 9 === 0 && countMoves < 30){
+        document.querySelector(".stars").children[0].remove();
+    }
+
 }
+
+//adds a number of stars to a HTML element
+function addStars(count){
+
+    fragment =  document.createDocumentFragment();
+    for (var i = 0; i < count; i++) {
+        var li = document.createElement('li');
+        li.innerHTML = '<i class="fa fa-star"></i>';
+        fragment.appendChild(li);
+    }
+    return fragment;
+}
+
 
 function gameTimer(startTime){
     timer = setInterval(function() {
@@ -139,10 +128,14 @@ function gameTimer(startTime){
     }, 1000);
 
 }
+
 function gameComplete(){
     gameOver.style.display = "block";
     document.querySelector(".resultTime").textContent = timeElapsed+" seconds";
     document.querySelector(".resultMoves").textContent = countMoves;
+    starCount = document.querySelector(".stars").childElementCount;
+    document.querySelector(".resultStars").appendChild(addStars(starCount));
+    clearInterval(timer);
 }
 
 function gameReset(){
@@ -155,8 +148,14 @@ function gameReset(){
     }
     document.querySelector(".timerClock").textContent = 0;
     document.querySelector(".moves").textContent = 0;
+    starCount = document.querySelector(".stars").childElementCount;
+    if(starCount < 3){
+        document.querySelector(".stars").appendChild(addStars(3 - starCount)); //append correct missing amount of stars to element
+    }
+
     clearInterval(timer);
-arrangeDeck();
+
+    arrangeDeck();
 }
 
 arrangeDeck();

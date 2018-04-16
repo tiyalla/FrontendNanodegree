@@ -148,3 +148,8 @@ h1 {
 .timer{
     padding-left: 30px;
 }
+
+.resultStars li{
+    list-style: none;
+    display: inline-block;
+}
