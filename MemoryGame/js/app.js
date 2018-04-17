@@ -1,24 +1,25 @@
 /*
  * Create a list that holds all of your cards
  */
-var container = document.querySelector(".deck");
-var icons = container.querySelectorAll("li.card > i");
-var cards = container.querySelectorAll("li.card");
-var gameOver = document.querySelector(".gameEnd");
+let container = document.querySelector(".deck");
+let icons = container.querySelectorAll("li.card > i");
+let cards = container.querySelectorAll("li.card");
+let gameOver = document.querySelector(".gameEnd");
 
-var cardClassNames = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt',
+//holds a list of cards
+let cardClassNames = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt',
     'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-diamond',
     'fa fa-bomb', 'fa fa-leaf', 'fa fa-bomb', 'fa fa-bolt', 'fa fa-bicycle', 'fa fa-paper-plane-o',
     'fa fa-cube'
 ];
 
 //helpers
-var openCards = [];
-var countMoves = 0, timer = 0, countCards = 0, firstClick = 0;
+let openCards = [];
+let countMoves = 0, timer = 0, countCards = 0, firstClick = 0;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -31,18 +32,20 @@ function shuffle(array) {
     return array;
 }
 
-function arrangeDeck(){ //shuffle cards and rearrange icons on cards
+//shuffle cards and rearrange icons on cards
+function arrangeDeck(){
     shuffle(cardClassNames);
-    for (var i = 0; i < icons.length; i++){
+    for (let i = 0; i < icons.length; i++){
         icons[i].className = cardClassNames[i];
     }
 }
 
-
-for(var i = 0; i < cards.length; i++){
+//add click event listener for each card
+for(let i = 0; i < cards.length; i++){
     cards[i].addEventListener("click", displayCard);
 }
 
+//show card image when clicked
 function displayCard(){
     firstClick+=1;
     if(firstClick === 1){
@@ -59,8 +62,8 @@ function displayCard(){
 
 //checks opened cards to see if they match
 function checkCardsMatch(cardElement){
-    var card1 = openCards[0];
-    var card2 = cardElement;
+    let card1 = openCards[0];
+    let card2 = cardElement;
     if(openCards.length === 1) {
         movesCounter();
         if (card1.className === card2.className) {
@@ -73,6 +76,7 @@ function checkCardsMatch(cardElement){
     }
 }
 
+//add match class to classes that match so cards stay open and are highlighted as a match
 function cardsMatch(card1, card2){
     openCards.length = 0;
     countCards+=1;
@@ -88,6 +92,7 @@ function cardsMatch(card1, card2){
     }
 }
 
+//stop showing card image if cards do not match
 function cardsNoMatch(card1, card2){
     openCards.length = 0;
 
@@ -98,6 +103,7 @@ function cardsNoMatch(card1, card2){
 
 }
 
+//count user moves as user clicks cards open
 function movesCounter(){
     countMoves+=1;
     document.querySelector(".moves").textContent = countMoves;
@@ -111,15 +117,15 @@ function movesCounter(){
 function addStars(count){
 
     fragment =  document.createDocumentFragment();
-    for (var i = 0; i < count; i++) {
-        var li = document.createElement('li');
+    for (let i = 0; i < count; i++) {
+        let li = document.createElement('li');
         li.innerHTML = '<i class="fa fa-star"></i>';
         fragment.appendChild(li);
     }
     return fragment;
 }
 
-
+//start game timer when user starts playing the game
 function gameTimer(startTime){
     timer = setInterval(function() {
         now = Date.now();
@@ -129,6 +135,7 @@ function gameTimer(startTime){
 
 }
 
+//show user game stats at the end of game
 function gameComplete(){
     gameOver.style.display = "block";
     document.querySelector(".resultTime").textContent = timeElapsed+" seconds";
@@ -138,12 +145,13 @@ function gameComplete(){
     clearInterval(timer);
 }
 
+//reset game for new game session and remove previous game session records
 function gameReset(){
     countCards = 0;
     countMoves = 0;
     openCards.length = 0;
     firstClick = 0;
-    for(var i = 0; i < cards.length; i++){
+    for(let i = 0; i < cards.length; i++){
         cards[i].classList.remove("open", "show", "match");
     }
     document.querySelector(".timerClock").textContent = 0;
