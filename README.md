@@ -47,6 +47,8 @@ The Nanodegree is broken up into these main chapters:
   - Build-ins: Sets, Maps, Proxies, Generators, Iteration,...
   - ES6 - ES5: Polyfills & transpiling
   - Jasmine, writing tests & Test Suites (including asynchronous code)
+    #### Also Covered:
+    - Accessibility
   
   ### 4. Front-End Applications
   - Creating & Chaining Promises
