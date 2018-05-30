@@ -47,6 +47,8 @@ The Nanodegree is broken up into these main chapters:
   - Build-ins: Sets, Maps, Proxies, Generators, Iteration,...
   - ES6 - ES5: Polyfills & transpiling
   - Jasmine, writing tests & Test Suites (including asynchronous code)
+    #### Also Covered:
+    - Accessibility
   
   ### 4. Front-End Applications
   - Creating & Chaining Promises
@@ -72,9 +74,10 @@ The Nanodegree is broken up into these main chapters:
 - [x] P3 Personal Portfolio
 - [x] P4 Interactive Resume
 - [x] P5 Pixel Art Maker
-- [] P6 Memory Game (in Progress)
-- [] P7 Website Optimization (to be completed)
-- [] P7 Neighborhood Map (to be completed)
+- [x] P6 Memory Game
+- [x] P7 Arcade Game
 - [] P8 Feed Reader Testing (to be completed)
-- [] P9 Restaurant Reviews(to be completed)
+- [] P8 Website Optimization (to be completed)
+- [] P10 Neighborhood Map (to be completed)
+- [] P11 Restaurant Reviews(to be completed)
 
