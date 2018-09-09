@@ -142,7 +142,7 @@ nav h1 a {
   background-color: #fff;
   border: 2px solid #ccc;
   font-family: Arial,sans-serif;
-  margin-left: 18%;
+  margin-left: 16%;
   min-height: 380px;
   padding: 0 30px 25px;
   text-align: left;
@@ -273,4 +273,11 @@ nav h1 a {
 }
 #restaurant-hours td {
   color: #666;
+}
+
+/* ========== Responsive Design for Restaurant Listing ============ */
+@media screen and (max-width: 700px){
+  #restaurants-list li {
+    margin-left: 12%;
+  }
 }
