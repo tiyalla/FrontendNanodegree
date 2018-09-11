@@ -207,7 +207,7 @@ nav h1 a {
 .inside #footer {
   bottom: 0;
   position: relative;
-  width: 50%;
+  width: 46%;
 }
 #restaurant-name {
   color: #f18200;
@@ -282,3 +282,58 @@ nav h1 a {
     margin-left: 12%;
   }
 }
+
+/* ========== Responsive Design for Restaurant Details ============ */
+@media screen and (min-width: 650px) and (max-width: 900px){
+  h1#restaurant-name {
+   padding-top: 8%;
+  }
+}
+
+
+@media screen and (max-width: 700px){
+
+html, body{
+  margin: 0;
+  top: 0;
+  overflow-x: hidden;
+}
+
+#maincontent {
+    width: 100%;
+}
+
+  .inside #map-container {
+    width: 100%;
+    position: relative;
+    height: 550px;
+    top: 0px;
+  }
+ 
+  .inside #restaurant-container {
+    width: 80%;
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-left: 10%;
+  }
+  
+  .inside #restaurant-img, #restaurant-cuisine , #restaurant-container, #reviews-container {
+    width: 100%;
+  }
+  .inside #restaurant-address,#reviews-container h2, #restaurant-cuisine, #restaurant-img, #restaurant-name  {
+    text-align: center;
+  }
+
+  .inside #footer {
+    width: 98%;
+    bottom: 0;
+    position: relative;
+  }
+  
+  nav{
+    padding-top: 6%;
+  }
+  
+}
+
+
