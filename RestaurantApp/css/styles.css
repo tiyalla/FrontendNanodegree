@@ -38,13 +38,14 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 #maincontent {
   background-color: #f3f3f3;
   min-height: 100%;
+  box-sizing: border-box;
 }
 #footer {
   background-color: #444;
   color: #aaa;
   font-size: 8pt;
   letter-spacing: 1px;
-  padding: 25px;
+  padding: 2%;
   text-align: center;
   text-transform: uppercase;
 }
@@ -142,7 +143,7 @@ nav h1 a {
   background-color: #fff;
   border: 2px solid #ccc;
   font-family: Arial,sans-serif;
-  margin-left: 16%;
+  margin-left: 17%;
   min-height: 380px;
   padding: 0 30px 25px;
   text-align: left;
@@ -205,8 +206,8 @@ nav h1 a {
 }
 .inside #footer {
   bottom: 0;
-  position: absolute;
-  width: 50%;
+  position: relative;
+  width: 46%;
 }
 #restaurant-name {
   color: #f18200;
@@ -240,11 +241,11 @@ nav h1 a {
 #restaurant-container, #reviews-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  padding: 140px 40px 30px;
+  padding: 12% 2% 2%;
   width: 50%;
 }
 #reviews-container {
-  padding: 30px 40px 80px;
+  padding: 2% 2% 3%;
 }
 #reviews-container h2 {
   color: #f58500;
@@ -262,9 +263,9 @@ nav h1 a {
     border: 2px solid #f3f3f3;
   display: block;
   list-style-type: none;
-  margin: 0 0 30px;
+  margin: 0 0 4%;
   overflow: hidden;
-  padding: 0 20px 20px;
+  padding: 0 3% 3%;
   position: relative;
   width: 85%;
 }
@@ -281,3 +282,58 @@ nav h1 a {
     margin-left: 12%;
   }
 }
+
+/* ========== Responsive Design for Restaurant Details ============ */
+@media screen and (min-width: 650px) and (max-width: 900px){
+  h1#restaurant-name {
+   padding-top: 8%;
+  }
+}
+
+
+@media screen and (max-width: 700px){
+
+html, body{
+  margin: 0;
+  top: 0;
+  overflow-x: hidden;
+}
+
+#maincontent {
+    width: 100%;
+}
+
+  .inside #map-container {
+    width: 100%;
+    position: relative;
+    height: 550px;
+    top: 0px;
+  }
+ 
+  .inside #restaurant-container {
+    width: 80%;
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-left: 10%;
+  }
+  
+  .inside #restaurant-img, #restaurant-cuisine , #restaurant-container, #reviews-container {
+    width: 100%;
+  }
+  .inside #restaurant-address,#reviews-container h2, #restaurant-cuisine, #restaurant-img, #restaurant-name  {
+    text-align: center;
+  }
+
+  .inside #footer {
+    width: 98%;
+    bottom: 0;
+    position: relative;
+  }
+  
+  nav{
+    padding-top: 6%;
+  }
+  
+}
+
+
