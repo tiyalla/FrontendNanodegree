@@ -5,8 +5,7 @@ var newMap
 var markers = []
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js')
-  .then((reg) => {
+  navigator.serviceWorker.register('sw.js', { scope: '/' }).then((reg) => {
      // registration success
     console.log('Registration succeeded:' + reg.scope);
   }).catch((error) => {

@@ -26,11 +26,9 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-  	caches.open('restaurant-review-v1').then((cache) => {
   		caches.match(event.request).then(function(response) {
-  			if (response) return response;
-    	return fetch(event.request);
+    	 return response || fetch(event);
   		})
-  	})
+
 	);
 });
