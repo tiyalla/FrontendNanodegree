@@ -12,7 +12,7 @@ a seamless offline experience for your users.
 
 ### How to Get Started. 
 
-1. In this folder, start up a simple HTTP server to serve up the site files on your local computer.
+1. Clone this repo and navigate to the restaurant app folder. In this folder, start up a simple HTTP server to serve up the site files on your local computer.
 Python has some simple tools to do this, and you don't even need to know Python. For most people,
 it's already installed on your computer.
 
