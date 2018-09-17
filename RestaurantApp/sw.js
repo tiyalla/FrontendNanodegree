@@ -24,10 +24,30 @@ self.addEventListener('install', (event) => {
   );
 });
 
+self.addEventListener('activate', event => {
+    console.log('[ServiceWorker] Activated');
+
+    event.waitUntil(
+        caches.keys()
+        .then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.filter(function(cacheName) {
+                    return cacheName.startsWith('restaurant') && cacheName != 'restaurant-review-v1';
+                }).map(function(cacheName) {
+                    return caches.delete(cacheName);
+                })
+            );
+        })
+    );
+});
+
 self.addEventListener('fetch', (event) => {
   event.respondWith(
   		caches.match(event.request).then(function(response) {
-    	 return response || fetch(event);
+        
+    	 return response || fetch(event.request);
+       
+
   		})
 
 	);
