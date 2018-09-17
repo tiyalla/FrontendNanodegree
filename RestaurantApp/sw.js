@@ -25,11 +25,12 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('activate', event => {
-    console.log('[ServiceWorker] Activated');
+    console.log('restaurant-review-v1 Activated');
 
     event.waitUntil(
         caches.keys()
         .then(function(cacheNames) {
+            
             return Promise.all(
                 cacheNames.filter(function(cacheName) {
                     return cacheName.startsWith('restaurant') && cacheName != 'restaurant-review-v1';
@@ -44,9 +45,28 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', (event) => {
   event.respondWith(
   		caches.match(event.request).then(function(response) {
-        
-    	 return response || fetch(event.request);
-       
+        if(response){
+          return response;
+        }
+    	 //return response || fetch(event.request);
+        var requestClone = event.request.clone();
+
+        return fetch(requestClone)
+            .then(function(response) {
+               
+                if(!response) {
+                    return response;
+                }
+                
+                var responseClone = response.clone();
+                return caches.open('restaurant-review-v1')
+                .then(function(cache) {
+                    cache.put(event.request, responseClone);
+                    return response;
+                })
+                
+
+            })
 
   		})
 

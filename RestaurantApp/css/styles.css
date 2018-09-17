@@ -277,16 +277,18 @@ nav h1 a {
 }
 
 /* ========== Responsive Design for Restaurant Listing ============ */
-@media screen and (max-width: 700px){
+@media screen and (max-width: 560px){
+  
   #restaurants-list li {
-    margin-left: 12%;
-  }
+    margin-left: 0;
+    width: 100%;
+    padding: 0;
 }
 
 /* ========== Responsive Design for Restaurant Details ============ */
 @media screen and (min-width: 650px) and (max-width: 900px){
   h1#restaurant-name {
-   padding-top: 8%;
+   padding-top: 15%;
   }
 }
 
@@ -299,8 +301,18 @@ html, body{
   overflow-x: hidden;
 }
 
+
 #maincontent {
     width: 100%;
+}
+
+/*#restaurants-list li {
+    margin-left: 12%;
+  }*/
+
+  
+#breadcrumb {
+    width: 100% !important;
 }
 
   .inside #map-container {
