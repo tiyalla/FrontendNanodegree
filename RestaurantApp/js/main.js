@@ -4,15 +4,7 @@ let restaurants,
 var newMap
 var markers = []
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js', { scope: '/' }).then((reg) => {
-     // registration success
-    console.log('Registration succeeded:' + reg.scope);
-  }).catch((error) => {
-    // registration fail
-    console.log('Registration failed' + error);
-  });
-}
+
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
@@ -219,4 +211,17 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 } */
+
+// Register service worker
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+  .register('sw.js', { scope: '' }).then((reg) => {
+     // registration success
+    console.log('Registration succeeded:' + reg.scope);
+  }).catch((error) => {
+    // registration fail
+    console.log('Registration failed' + error);
+  });
+}
 
