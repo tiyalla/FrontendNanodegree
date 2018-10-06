@@ -76,8 +76,6 @@ The Nanodegree is broken up into these main chapters:
 - [x] P5 Pixel Art Maker
 - [x] P6 Memory Game
 - [x] P7 Arcade Game
-- [x] P8 Feed Reader Testing (to be completed)
-- [] P8 Website Optimization (to be completed)
+- [x] P8 Feed Reader Testing 
+- [x] P9 Restaurant Reviews App
 - [] P10 Neighborhood Map (to be completed)
-- [] P11 Restaurant Reviews(to be completed)
-
