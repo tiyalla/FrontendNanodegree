@@ -13,20 +13,22 @@ class SearchBooks extends Component{
         BooksAPI.search(query).then(books => books ? this.setState({ books }) : []);
         this.setState({ query });
     }
-  
+    
   
     renderResults() {
         const { books, query } = this.state;
         const{ onChangeShelf } = this.props;
+        //console.log("books", books);
         if (query) {
             return books.error ?
                 <div>Oops! Nothing found</div>
                 : books.map((book, index) => {
                     return (
+                        
                         <ChangeShelf
-                            key={index}
+                            key={book.id}
                             book={book}
-                            onChangeShelf={onChangeShelf}
+                            onChangeShelf={onChangeShelf} 
                         />
                     );
                 });
