@@ -5,30 +5,50 @@ import ChangeShelf from './ChangeShelf';
 
 class SearchBooks extends Component{
     state = {
-        books: [],
+        allBooks: [],
         query: ''
     }
     
-    updateQuery(query) {
-        BooksAPI.search(query).then(books => books ? this.setState({ books }) : []);
-        this.setState({ query });
+    updateQuery(query){
+    if(query){
+        BooksAPI.search(query).then((allBooks) => {
+            this.handleShelf(allBooks);
+            this.setState({ allBooks });
+        })
+    }else {
+        this.setState({ allBooks: []});
     }
+        this.setState({ query });
+ }
     
-  
+     
+     handleShelf = (bookValues) => {
+        const{ books } = this.props;
+        for (let value of bookValues) {
+          for (let book of books) {
+            if (value.id === book.id) {
+              value.shelf = book.shelf
+            }
+          }
+        }
+        this.setState({allBooks: bookValues})
+    }
+     
+ 
     renderResults() {
-        const { books, query } = this.state;
+        const { allBooks, query } = this.state;
         const{ onChangeShelf } = this.props;
-        //console.log("books", books);
+       
         if (query) {
-            return books.error ?
+            return allBooks.error ?
                 <div>Oops! Nothing found</div>
-                : books.map((book, index) => {
+                : allBooks.map((book) => {
                     return (
                         
                         <ChangeShelf
                             key={book.id}
                             book={book}
-                            onChangeShelf={onChangeShelf} 
+                            onChangeShelf={onChangeShelf}
                         />
                     );
                 });
@@ -37,6 +57,7 @@ class SearchBooks extends Component{
 
     render() {
         //const{ onChangeShelf } = this.props;
+
             return (
                 <div className="search-books">
                   <div className="search-books-bar">

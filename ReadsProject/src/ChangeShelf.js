@@ -5,8 +5,8 @@ class ChangeShelf extends Component {
   
     render() {
         const { book, onChangeShelf } = this.props;
-        let shelfValue = (book.shelf) ? book.shelf : 'none';
-        // console.log("what am i here", book);
+        let shelfValue = book.shelf ? book.shelf : 'none';
+        
         return(
         <li>
         <div className="book">
@@ -18,11 +18,12 @@ class ChangeShelf extends Component {
               </div>
             )}
             <div className="book-shelf-changer">
+            
                 <select
-                value={shelfValue} 
                 onChange={(event) => onChangeShelf(book, event.target.value)}
+                value={shelfValue} 
                 >
-                <option value="none" disabled>Move to...</option>
+                <option value="moveTo" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
                 <option value="read">Read</option>
